@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Xin lỗi bé iu 🥺</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      text-align: center;
+      padding: 50px;
+      color: #333;
+    }
+    .message {
+      font-size: 1.5em;
+      margin: 20px 0;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #ff4d6d;
+      animation: heartbeat 1.5s infinite;
+    }
+    button {
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 20px;
+      display: none;
+    }
+    button:hover {
+      background: #ff1e50;
+      transform: scale(1.1);
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🥺 Bé iu ơi 💖</h1>
+  <div class="message" id="msg1">Anh biết là em đang rất giận anh...</div>
+  <div class="message" id="msg2">Anh rất xin lỗi em bé vì đã không rep em bé ngay 😢</div>
+  <div class="message" id="msg3">Xinh gái của anh tha lỗi cho anh đi ạ 💕</div>
+  <div class="message" id="msg4">Anh nhớ em lắm rồi 🥺</div>
+
+  <button onclick="alert('Em đã tha lỗi cho anh rồi nè 🥰')">
+    Nếu em tha lỗi thì bấm vào đây 💖
+  </button>
+
+  <script>
+    const messages = [
+      document.getElementById("msg1"),
+      document.getElementById("msg2"),
+      document.getElementById("msg3"),
+      document.getElementById("msg4"),
+    ];
+    const button = document.querySelector("button");
+
+    messages.forEach((msg, i) => {
+      setTimeout(() => {
+        msg.style.opacity = 1;
+        if (i === messages.length - 1) {
+          button.style.display = "inline-block";
+        }
+      }, 2000 * (i + 1));
+    });
+  </script>
+</body>
+</html>
 
