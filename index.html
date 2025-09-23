@@ -2,77 +2,105 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Xin lỗi bé iu 🥺</title>
+  <title>Dỗ bé iu ❤️</title>
   <style>
     body {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      font-family: Arial, sans-serif;
       text-align: center;
+      background: pink;
       padding: 50px;
-      color: #333;
-    }
-    .message {
-      font-size: 1.5em;
-      margin: 20px 0;
-      opacity: 0;
-      transition: opacity 1s;
+      overflow: hidden;
     }
     h1 {
-      font-size: 2.5em;
-      color: #ff4d6d;
-      animation: heartbeat 1.5s infinite;
+      color: #d63384;
+    }
+    .buttons {
+      margin-top: 20px;
     }
     button {
-      background: #ff4d6d;
-      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
       border: none;
-      padding: 15px 25px;
-      font-size: 1.2em;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: 0.3s;
-      margin-top: 20px;
+      margin: 10px;
+    }
+    #yesBtn {
+      background-color: #ff4da6;
+      color: white;
+    }
+    #noBtn {
+      background-color: #6c757d;
+      color: white;
+      position: absolute;
+    }
+    #message {
+      margin-top: 30px;
+      font-size: 22px;
+      font-weight: bold;
+      color: red;
       display: none;
     }
-    button:hover {
-      background: #ff1e50;
-      transform: scale(1.1);
+    .heart {
+      position: fixed;
+      font-size: 24px;
+      color: red;
+      animation: floatUp 4s linear forwards;
+      pointer-events: none;
     }
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-300px) scale(1.5);
+      }
     }
   </style>
 </head>
 <body>
-  <h1>🥺 Bé iu ơi 💖</h1>
-  <div class="message" id="msg1">Anh biết là em đang rất giận anh...</div>
-  <div class="message" id="msg2">Anh rất xin lỗi em bé vì đã không rep em bé ngay 😢</div>
-  <div class="message" id="msg3">Xinh gái của anh tha lỗi cho anh đi ạ 💕</div>
-  <div class="message" id="msg4">Anh nhớ em lắm rồi 🥺</div>
-
-  <button onclick="alert('Em đã tha lỗi cho anh rồi nè 🥰')">
-    Nếu em tha lỗi thì bấm vào đây 💖
-  </button>
+  <h1>Bé iu ơi 💕</h1>
+  <p>Anh biết là em đang rất giận anh, anh rất xin lỗi em bé vì đã không rep em ngay.<br>
+     Xinh gái của anh tha lỗi cho anh nhé 🥺</p>
+  <div class="buttons">
+    <button id="yesBtn">Có 💖</button>
+    <button id="noBtn">Không 😢</button>
+  </div>
+  <p id="message">Anh yêu em nhìu lắm ạ 💕 Cảm ơn em bé đã tha lỗi cho anh 😘</p>
 
   <script>
-    const messages = [
-      document.getElementById("msg1"),
-      document.getElementById("msg2"),
-      document.getElementById("msg3"),
-      document.getElementById("msg4"),
-    ];
-    const button = document.querySelector("button");
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const message = document.getElementById('message');
 
-    messages.forEach((msg, i) => {
-      setTimeout(() => {
-        msg.style.opacity = 1;
-        if (i === messages.length - 1) {
-          button.style.display = "inline-block";
-        }
-      }, 2000 * (i + 1));
+    yesBtn.addEventListener('click', () => {
+      message.style.display = 'block';
+      for (let i = 0; i < 15; i++) {
+        createHeart();
+      }
     });
+
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth));
+      const y = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight));
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    });
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '💖';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = (window.innerHeight - 30) + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
   </script>
 </body>
 </html>
-
